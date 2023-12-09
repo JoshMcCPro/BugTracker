@@ -15,9 +15,33 @@ class AuthDialog : public QDialog
 public:
     explicit AuthDialog(QWidget *parent = nullptr);
     ~AuthDialog();
-    void loginAuth();
+    // verify if email exists
+    bool doesEmailExist(QString email);
+
+    void storeUserData();
+    void sendUserData();
+
+    /*USER LOGIN*/
+
+    // verify password
+    bool bDoesPasswordExist(const QString &enteredPassword, const QString &storedPassword, const QString &salt, int iterations, quint64 keylength);
 
     /*USER SIGNUP*/
+
+    // Verify Sign Up
+
+    // verify email format
+    bool verifyEmailFormat();
+    // verify first name format
+    bool verifyFirstNameFormat();
+    // verify last name format
+    bool verifyLastNameFormat();
+    // verify password format
+    bool verifyPasswordFormat();
+    // verify confirm password
+    bool verifyConfirmPassword();
+
+    // Encrypt Sign Up
 
     // encrypt salt
     QString generateSalt();
@@ -28,15 +52,14 @@ public:
     // send email verification code
     void sendEmailVerificationCode(QString recieverEmail);
 
+private slots:
     /*USER LOGIN*/
 
-    // verify password
-    bool verifyPassword(const QString &enteredPassword, const QString &storedPassword, const QString &salt, int iterations, quint64 keylength);
-
-private slots:
     void on_pb_login_login_clicked();
 
     void on_pb_signuppage_login_clicked();
+
+    /*USER SIGNUP*/
 
     void on_pb_loginpage_signup_clicked();
 
@@ -57,14 +80,16 @@ private:
     // SQL Database
     DatabaseConnection mDbConnection;
 
-    // User SignUp
-    bool bValidEmail = false;
-    bool bValidUsername = false;
-    bool bValidPassword = false;
-
-    // User Login
+    // User Sign Up
+    QString emailSP;
+    QString firstNameSP;
+    QString lastNameSP;
+    QString passwordSP;
+    QString confirmPasswordSP;
+    QString emailCode;
 
     // Pages
+    int emailCodeIndex = 2;
     int signupIndex = 1;
     int loginIndex = 0;
 };

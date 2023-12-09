@@ -1,0 +1,362 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>ProjectManagerWidget</class>
+ <widget class="QWidget" name="ProjectManagerWidget">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>640</width>
+    <height>480</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <layout class="QHBoxLayout" name="horizontalLayout">
+   <property name="spacing">
+    <number>0</number>
+   </property>
+   <property name="leftMargin">
+    <number>0</number>
+   </property>
+   <property name="topMargin">
+    <number>0</number>
+   </property>
+   <property name="rightMargin">
+    <number>0</number>
+   </property>
+   <property name="bottomMargin">
+    <number>0</number>
+   </property>
+   <item>
+    <widget class="QWidget" name="projectListWidget" native="true">
+     <property name="styleSheet">
+      <string notr="true">QWidget
+{
+	background-color: #023859;
+}
+
+QPushButton { 
+	border: none;
+	background-color: #023859; 
+	padding: 4px 0px;
+	font: 12pt &quot;Open Sans Condensed&quot;;
+}
+QPushButton:hover
+{
+   
+	background-color: rgb(4, 177, 217);
+}
+</string>
+     </property>
+     <layout class="QVBoxLayout" name="verticalLayout_2">
+      <property name="spacing">
+       <number>0</number>
+      </property>
+      <property name="leftMargin">
+       <number>0</number>
+      </property>
+      <property name="topMargin">
+       <number>0</number>
+      </property>
+      <property name="rightMargin">
+       <number>0</number>
+      </property>
+      <property name="bottomMargin">
+       <number>0</number>
+      </property>
+      <item>
+       <widget class="QWidget" name="projectListWidgetContents" native="true">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Maximum" vsizetype="Preferred">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QWidget {
+border:none;
+}</string>
+        </property>
+        <layout class="QVBoxLayout" name="verticalLayout" stretch="0,0">
+         <property name="spacing">
+          <number>0</number>
+         </property>
+         <property name="leftMargin">
+          <number>0</number>
+         </property>
+         <property name="topMargin">
+          <number>0</number>
+         </property>
+         <property name="rightMargin">
+          <number>0</number>
+         </property>
+         <property name="bottomMargin">
+          <number>10</number>
+         </property>
+         <item>
+          <widget class="QLabel" name="lb_ProjectList">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>0</width>
+             <height>36</height>
+            </size>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">background-color: rgb(3, 89, 140);
+font: 16pt &quot;Open Sans Condensed Light&quot;;
+border-bottom: 1px solid rgb(1, 21, 38);
+border-left: 1px solid rgb(1, 21, 38);
+min-height: 35px;
+</string>
+           </property>
+           <property name="text">
+            <string>Project List</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QScrollArea" name="projectListScrollArea">
+           <property name="styleSheet">
+            <string notr="true">/* Scroll Bar */
+QScrollBar:vertical {
+    border:none; /* Outer border color */
+	background-color: rgb(2, 56, 89);
+    width: 13px; /* Width of the scroll bar */
+    margin: 22px 5px 22px 0px; /* Margin around the scroll bar */
+	
+}
+
+/* Handle */
+QScrollBar::handle:vertical {
+	
+	background-color: rgb(1, 21, 38);
+    min-height: 20px; /* Minimum height of the handle */
+	border: 1px solid white;
+	border-radius: 4px;
+}
+
+/* Add arrow buttons at the top and bottom of the scroll bar */
+QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical {
+    border: none;
+    background: none;
+}
+
+QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {
+    background: none;
+}</string>
+           </property>
+           <property name="horizontalScrollBarPolicy">
+            <enum>Qt::ScrollBarAlwaysOff</enum>
+           </property>
+           <property name="sizeAdjustPolicy">
+            <enum>QAbstractScrollArea::AdjustIgnored</enum>
+           </property>
+           <property name="widgetResizable">
+            <bool>true</bool>
+           </property>
+           <widget class="QWidget" name="projectScrollAreaWidgetContents">
+            <property name="geometry">
+             <rect>
+              <x>0</x>
+              <y>0</y>
+              <width>82</width>
+              <height>434</height>
+             </rect>
+            </property>
+            <layout class="QVBoxLayout" name="verticalLayout_7">
+             <property name="spacing">
+              <number>0</number>
+             </property>
+             <property name="leftMargin">
+              <number>0</number>
+             </property>
+             <property name="topMargin">
+              <number>0</number>
+             </property>
+             <property name="rightMargin">
+              <number>0</number>
+             </property>
+             <property name="bottomMargin">
+              <number>0</number>
+             </property>
+             <item>
+              <widget class="QPushButton" name="pb_NewProject">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Ignored" vsizetype="Fixed">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="text">
+                <string>New Project</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <spacer name="verticalSpacer">
+               <property name="orientation">
+                <enum>Qt::Vertical</enum>
+               </property>
+               <property name="sizeHint" stdset="0">
+                <size>
+                 <width>20</width>
+                 <height>40</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+            </layout>
+           </widget>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <widget class="QStackedWidget" name="projectInfoStackedWidget">
+     <property name="styleSheet">
+      <string notr="true">
+QWidget {
+	background-color: #011526;
+
+}
+
+QLabel 
+{
+	background-color: rgb(3, 89, 140);
+	font: 16pt &quot;Open Sans Condensed Light&quot;;
+	border-bottom: 1px solid rgb(1, 21, 38);
+	min-height: 35px;
+	border-left: 1px solid rgb(1, 21, 38);
+	
+}
+
+QPushButton {
+	background-color: rgb(3, 89, 140);
+	font: 16pt &quot;Open Sans Condensed&quot;;
+	padding: 8px 16px;
+	border-radius: 5px;
+	margin: 5px;
+}
+
+QPushButton:hover {
+	background-color: rgb(4, 177, 217);
+}
+
+QPushButton:hover
+{
+   background-color:lightgrey;
+}
+
+QLineEdit {
+	background-color: rgb(255, 255, 255);
+	border:none;
+	border-radius: 5px;
+	margin-bottom: 15px;
+	color: black;
+	padding: 4px;
+}
+
+QPlainTextEdit {
+	background-color: rgb(255, 255, 255);
+	border:none;
+	border-radius: 5px;
+	margin-bottom: 15px;
+	color: black;
+	padding: 4px;
+}
+
+QPlainTextEdit QScrollBar:vertical {
+    width: 12px; /* Set your desired width */
+	background-color: rgb(255, 255, 255);
+	border:none;
+}
+
+QPlainTextEdit QScrollBar::handle:vertical {
+    background: #999; /* Set your desired handle color */
+    border-radius: 6px; /* Set the border-radius to half the height to make it round */
+}
+
+QPlainTextEdit QScrollBar::add-line:vertical,
+QPlainTextEdit QScrollBar::sub-line:vertical {
+    height: 0;
+    subcontrol-position: top;
+    subcontrol-origin: margin;
+	color: white;
+}</string>
+     </property>
+     <property name="currentIndex">
+      <number>0</number>
+     </property>
+     <widget class="QWidget" name="defaultProjectPage">
+      <property name="styleSheet">
+       <string notr="true"/>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout_4">
+       <property name="spacing">
+        <number>0</number>
+       </property>
+       <property name="leftMargin">
+        <number>0</number>
+       </property>
+       <property name="topMargin">
+        <number>0</number>
+       </property>
+       <property name="rightMargin">
+        <number>0</number>
+       </property>
+       <property name="bottomMargin">
+        <number>0</number>
+       </property>
+       <item>
+        <widget class="QLabel" name="lb_NewProject">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>36</height>
+          </size>
+         </property>
+         <property name="styleSheet">
+          <string notr="true"/>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="verticalSpacer_2">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

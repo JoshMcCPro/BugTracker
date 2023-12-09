@@ -10,11 +10,15 @@ public:
                        const QString &driver,
                        const QString &user,
                        const QString &password,
-                       const QString &databaseName);
+                       const QString &databaseName,
+                       const QString &connectionName);
+
     bool openDatabase(QString *error = nullptr);
-    QSqlDatabase mDatabase;
+    void closeDatabase();
+    void insertValues(QString mDbConnectionName, QString tableName, QMap<QString, QVariant>);
 
 private:
+    QSqlDatabase mDatabase;
     QString mServer;
     QString mDriver;
     QString mUser;

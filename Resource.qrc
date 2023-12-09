@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/rec">
+        <file>Resource/IMG_BugTrackerLogo.png</file>
+    </qresource>
+</RCC>
