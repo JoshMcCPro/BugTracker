@@ -1,8 +1,6 @@
 #ifndef PROJECTMANAGERWIDGET_H
 #define PROJECTMANAGERWIDGET_H
 
-#include <QWidget>
-#include <QStackedWidget>
 
 #include "databaseconnection.h"
 #include "ProjectManagement/newprojectwidget.h"
@@ -11,6 +9,10 @@
 #include "ProjectManagement/projectbutton.h"
 #include "user.h"
 #include "project.h"
+
+#include <QWidget>
+#include <QStackedWidget>
+#include <QBoxLayout>
 
 namespace Ui {
 class ProjectManagerWidget;
@@ -30,7 +32,7 @@ public:
     void openDefaultPage();
 
 signals:
-    void projectButtonClicked(const Project& project);
+    void onProjectButtonClicked(const Project& project);
 
 public slots:
     void handleOpenCreateProject();
@@ -41,6 +43,8 @@ private slots:
     void on_pb_NewProject_clicked();
 
     void handleOnProjectButtonClicked(const Project& project);
+
+    void handleCreateProject();
 
 private:
     /*VARIABLES*/
@@ -68,6 +72,10 @@ private:
     /*FUNCTIONS*/
     void createProjectButtons();
 
+    // where projects are listed
+    QBoxLayout* projectListLayout;
+
+    // get users projects
     QList<Project> getProjectsFromDatabase();
 
 };

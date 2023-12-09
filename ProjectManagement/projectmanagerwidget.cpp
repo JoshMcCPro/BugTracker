@@ -27,6 +27,7 @@ ProjectManagerWidget::ProjectManagerWidget(const User& user, QWidget *parent) :
     ui->setupUi(this);
 
     projectInfoStackedWidget = ui->projectInfoStackedWidget;
+    createProjectButtons();
 
     // initialize widgets
     newProjectWidget = nullptr;
@@ -65,10 +66,10 @@ void ProjectManagerWidget::openPage(QString pageName)
             newWidget = newProjectWidget;
 
         } else if (pageName == "CreateProjectPage") {
-            createProjectWidget = new CreateProjectWidget(this);
+            createProjectWidget = new CreateProjectWidget(mUser, this);
 
             // handle create project widget button actions
-            connect(createProjectWidget, &CreateProjectWidget::ProjectCreated, this, &ProjectManagerWidget::openDefaultPage);
+            connect(createProjectWidget, &CreateProjectWidget::ProjectCreated, this, &ProjectManagerWidget::handleCreateProject);
 
             newWidget = createProjectWidget;
 
@@ -109,25 +110,41 @@ void ProjectManagerWidget::on_pb_NewProject_clicked()
 
 void ProjectManagerWidget::handleOnProjectButtonClicked(const Project &project)
 {
-    emit projectButtonClicked(project);
+    emit onProjectButtonClicked(project);
+}
+
+void ProjectManagerWidget::handleCreateProject()
+{
+    openDefaultPage();
+    createProjectButtons();
 }
 
 void ProjectManagerWidget::createProjectButtons()
 {
-    QList<Project> projects = getProjectsFromDatabase();
+    QLayout *existingLayout = ui->projectScrollAreaWidgetContents->layout();
+    if (existingLayout) {
+        delete existingLayout;
+    }
 
-    QVBoxLayout* layout = new QVBoxLayout(ui->projectListWidgetContents);
+    projectListLayout = new QVBoxLayout(ui->projectScrollAreaWidgetContents);
+
+    QList<Project> projects = getProjectsFromDatabase();
 
     for (const auto& project : projects)
     {
         ProjectButton* projectButton = new ProjectButton(project);
-        connect(projectButton, &ProjectButton::onProjectButtonclicked, this, &ProjectManagerWidget::handleOnProjectButtonClicked);
+        connect(projectButton, &ProjectButton::onProjectButtonClicked, this, &ProjectManagerWidget::handleOnProjectButtonClicked);
 
 
-        layout->addWidget(projectButton);
+        projectListLayout->addWidget(projectButton);
     }
 
-    ui->projectListWidgetContents->setLayout(layout);
+    // design layout
+    QSpacerItem *verticalSpacer = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
+    projectListLayout->addItem(verticalSpacer);
+
+
+    ui->projectScrollAreaWidgetContents->setLayout(projectListLayout);
 }
 
 QList<Project> ProjectManagerWidget::getProjectsFromDatabase()

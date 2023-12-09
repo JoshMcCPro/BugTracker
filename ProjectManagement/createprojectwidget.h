@@ -3,6 +3,7 @@
 
 #include <QWidget>
 #include "databaseconnection.h"
+#include "user.h"
 
 namespace Ui {
 class CreateProjectWidget;
@@ -13,7 +14,7 @@ class CreateProjectWidget : public QWidget
     Q_OBJECT
 
 public:
-    explicit CreateProjectWidget(QWidget *parent = nullptr);
+    explicit CreateProjectWidget(const User &user, QWidget *parent = nullptr);
     ~CreateProjectWidget();
 
     void createProject();
@@ -26,6 +27,8 @@ private slots:
 
 private:
     Ui::CreateProjectWidget *ui;
+    // user info
+    User mUser;
 
     // SQL DB
     QString mDbConnectionName = "createProjectConnection";

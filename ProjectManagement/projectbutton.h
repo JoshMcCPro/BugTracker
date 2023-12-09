@@ -12,7 +12,7 @@ public:
     explicit ProjectButton(const Project& project, QPushButton *parent = nullptr);
 
 signals:
-    void onProjectButtonclicked(const Project& project);
+    void onProjectButtonClicked(const Project& project);
 
 private slots:
     void handleOnProjectButtonClicked();

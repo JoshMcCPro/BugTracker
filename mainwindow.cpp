@@ -71,7 +71,7 @@ void MainWindow::openPage(const QString &pageName)
             User pmUser = *user;
             projectManager = new ProjectManagerWidget(pmUser, this);
             // handles project manager action button
-                connect(projectManager, &ProjectManagerWidget::projectButtonClicked, this, &MainWindow::handleOpenProjectDetails);
+                connect(projectManager, &ProjectManagerWidget::onProjectButtonClicked, this, &MainWindow::handleOpenProjectDetails);
             newWidget = projectManager;
         }
         else if (pageName == "IssueManagerPage") {

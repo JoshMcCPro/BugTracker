@@ -8,14 +8,15 @@ ProjectButton::ProjectButton(const Project& project, QPushButton *parent)
     mProject(project)
 {
     setupButton();
-    connect(this, &ProjectButton::onProjectButtonclicked, this, &ProjectButton::handleOnProjectButtonClicked);
+    connect(this, &ProjectButton::clicked, this, &ProjectButton::handleOnProjectButtonClicked);
 }
 
 void ProjectButton::handleOnProjectButtonClicked()
 {
     // perform project button action
     // go to project page
-    emit onProjectButtonclicked(mProject);
+    qDebug() << "clicked " << objectName();
+    emit onProjectButtonClicked(mProject);
 }
 
 void ProjectButton::setupButton()

@@ -6,9 +6,10 @@
 #include <QSqlError>
 #include <QDateTime>
 
-CreateProjectWidget::CreateProjectWidget(QWidget *parent) :
+CreateProjectWidget::CreateProjectWidget(const User& user, QWidget *parent) :
     QWidget(parent),
     ui(new Ui::CreateProjectWidget),
+    mUser(user),
     mDbConnection("serverbugtracker.database.windows.net",
                   "SQL SERVER",
                   "JoshMcCPro",
@@ -38,8 +39,8 @@ void CreateProjectWidget::createProject()
 
     QSqlQuery query(QSqlDatabase::database(mDbConnectionName));
 
-    if (!query.prepare("INSERT INTO projects (prj_title, prj_summary, prj_description, prj_created_at)"
-                       "VALUES (:title, :summary, :description, :createdAt)")) {
+    if (!query.prepare("INSERT INTO projects (prj_title, prj_summary, prj_description, prj_created_at, user_id)"
+                       "VALUES (:title, :summary, :description, :createdAt, :user_id)")) {
         qDebug() << "Error preparing project query: " << query.lastError().text();
         QSqlDatabase::database(mDbConnectionName).rollback();
         return;
@@ -49,6 +50,7 @@ void CreateProjectWidget::createProject()
     query.bindValue(":summary", summary);
     query.bindValue(":description", description);
     query.bindValue(":createdAt", QDateTime::currentDateTime());
+    query.bindValue(":user_id", mUser.getId());
 
 
     if (!query.exec()) {
