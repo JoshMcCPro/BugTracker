@@ -1,9 +1,11 @@
 # BugTracker
 
 ## Design Phase
-*Class Diagram*
+*Class Diagram (LucidCharts/UML)*
 
-<img src="Design/Diagrams/ClassDiagram.png" width="500">
+<div align="center">
+  <img src="Design/Diagrams/ClassDiagram.png" width="300">
+</div>
 
 **Summary**
 * User
@@ -12,9 +14,13 @@
 * Issue Management
 * Project Management
 
-*Use Case Diagram*
+---
 
-<img src="Design/Diagrams/UseCaseDiagram.png" width="500">
+*Use Case Diagram (LucidCharts/UML)*
+
+<div align="center">
+  <img src="Design/Diagrams/UseCaseDiagram.png" width="300">
+</div>
 
 **Summary**
 * User
@@ -28,9 +34,13 @@
 * Assign Issue
 * Update Issue
 
-*Database Schema*
+---
 
-<img src="Design/Diagrams/Database Schema.png" width="500">
+*Database Schema (LucidCharts/UML)*
+
+<div align="center">
+  <img src="Design/Diagrams/Database Schema.png" height="300">
+</div>
 
 **Summary**
 * User Auth
@@ -42,9 +52,11 @@
 * Issue
 * Comments
 
-*User Interface*
+---
 
-<p>
+*User Interface (Figma)*
+
+<p align="center">
   <img src="Design/UserInterface/UI_SignIn.png" height="200">
   <img src="Design/UserInterface/UI_SignUp.png" height="200">
   <img src="Design/UserInterface/UI_MainScreen-01.png" height="200">
@@ -57,9 +69,22 @@
   <img src="Design/UserInterface/UI_MainScreen-08.png" height="200">
   <img src="Design/UserInterface/UI_MainScreen-09.png" height="200">
   <img src="Design/UserInterface/UI_MainScreen-10.png" height="200">
-  
 </p>
 
-
-
 ## Production Phase
+
+*User Log In*
+
+---
+
+*User Sign Up*
+
+---
+
+*Projects*
+
+---
+
+*Issues*
+
+---
